@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}samsimsom - {{ img }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+    {# Navbar include #}
+    {% include 'navbar.html' %}
+
+    <div class="container">
+
+        {% set i = img == img %}
+        {% if i %}
+            {% for y in imgDB['img_' + img] %}
+                {% set ex = imgDB['img_' + img][y] != imgDB['img_' + img]['thum'] %}
+                {% if ex %}
+        <div class="col-md-8 col-md-offset-2">
+            <img title="{{ img }}" class="img-responsive img-rounded" src="{{ imgDB['img_' + img][y] }}">
+            <hr>
+        </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+        <div class="col-md-8 col-md-offset-2">
+            <h4><strong>Title : {{ img }}</strong></h4>
+            <hr>
+            <p class="text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Proin rhoncus faucibus nunc sed suscipit. Aenean ac enim enim.
+                Cras accumsan ipsum lacus, id eleifend arcu eleifend et.
+                Proin dapibus lobortis est, vel pretium ante sagittis cursus.
+                Sed tempus ipsum urna, eu efficitur quam pellentesque ut.
+                Quisque nec lacinia quam, sed eleifend libero. Nulla facilisi.
+                Pellentesque in lacus maximus, gravida mi vitae, vestibulum turpis.
+                Donec vestibulum finibus ante in consectetur. Curabitur rutrum mi
+                quis est pretium, quis blandit nisl convallis.
+            </p>
+        </div>
+    </div>
+{% endblock %}

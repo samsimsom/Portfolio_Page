@@ -1,0 +1,17 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}samsimsom - portfolio{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+    {# Navbar include #}
+    {% include 'navbar.html' %}
+
+    {# portfolio_thumbnails.html include #}
+    {% include 'portfolio_thumbnails.html' %}
+
+{% endblock %}
