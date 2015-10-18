@@ -12,12 +12,6 @@
     {% include 'navbar.html' %}
 
     <div class="container">
-        {% for big_img in  con_bigPic%}
-            <div class="col-md-8 col-md-offset-2">
-                <img title="{{ con_title }}" class="img-responsive img-rounded" src="{{ big_img }}">
-                <hr>
-            </div>
-        {% endfor %}
 
         <div class="col-md-8 col-md-offset-2">
             <h4><strong>Title : {{ con_title }}</strong></h4>
@@ -25,7 +19,19 @@
             <p class="text-justify">
                 {{ con_text }}
             </p>
+            <hr>
         </div>
+
+        {% for big_img in  con_bigPic %}
+            <div class="col-md-8 col-md-offset-2">
+                <img title="{{ con_title }}" class="img-responsive img-rounded"
+                     src="{{ big_img }}">
+                <hr>
+            </div>
+        {% endfor %}
+
+        {# footer include #}
+        {% include 'footer.html' %}
     </div>
 {% endblock %}
 

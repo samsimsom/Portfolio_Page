@@ -1,19 +1,33 @@
+### Python
+from datetime import datetime
+### Flask
 from flask import Flask, \
     render_template, \
-    url_for
-
+    url_for, \
+    session, \
+    g
+### Flask.ext
 from flask.ext.bootstrap import Bootstrap
 
-##
+### My
 from content_DB import Content
-##
-
-# from page_creator import page_ID_list
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'top secret!'
 bootstrap = Bootstrap(app)
 
 Content_DB = Content()
+
+@app.before_request
+def before_request():
+    if not 'count' in session:
+        session['count'] = 1
+
+    else:
+        session['count'] += 1
+
+    g.when = datetime.now().strftime('%H:%M:%S')
+
 
 @app.route('/')
 def index():
@@ -38,20 +52,26 @@ def index():
     return render_template('index.html',
                            Content_DB=Content_DB,
                            con_id_list=con_id_list,
-                           srt_str_con_id_list=srt_str_con_id_list)
+                           srt_str_con_id_list=srt_str_con_id_list,
+                           count=session['count'],
+                           when=g.when)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title='About', Aboactive=True)
+    return render_template('about.html',
+                           title='About',
+                           Aboactive=True)
 
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html', title='Contact', Conactive=True)
+    return render_template('contact.html',
+                           title='Contact',
+                           Conactive=True)
 
 
-@app.route('/portfolio/<page>')
+@app.route('/<page>')
 def single_img(page):
 
     if page == Content_DB['cont_01']['link']:
