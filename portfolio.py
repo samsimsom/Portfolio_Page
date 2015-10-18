@@ -1,8 +1,6 @@
 from flask import Flask, \
     render_template, \
-    url_for, \
-    request, \
-    redirect
+    url_for
 
 from flask.ext.bootstrap import Bootstrap
 
@@ -19,8 +17,28 @@ Content_DB = Content()
 
 @app.route('/')
 def index():
-    params = request.args.items()
-    return render_template('index.html', Content_DB=Content_DB, params=params)
+
+    ##
+    # contend_DB.py ID sort
+    con_id_list = []
+    for e_id in Content_DB:
+        con_id_list.append(Content_DB[e_id]['ID'])
+
+    srt_con_id_list = sorted(con_id_list, reverse=True)
+    #print(type(srt_con_id_list[0]))
+
+    # contend_DB.py ID Convert int() | str()
+    srt_str_con_id_list = []
+    for e_id_cnvrt in srt_con_id_list:
+        e_id_str = str(e_id_cnvrt)
+        srt_str_con_id_list.append(e_id_str)
+    #print(type(srt_str_con_id_list[0]))
+    ##
+
+    return render_template('index.html',
+                           Content_DB=Content_DB,
+                           con_id_list=con_id_list,
+                           srt_str_con_id_list=srt_str_con_id_list)
 
 
 @app.route('/about')
@@ -115,6 +133,15 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_010']['bigPic'],
                                con_title=Content_DB['cont_010']['title'],
                                con_text=Content_DB['cont_010']['text'])
+
+
+    if page == Content_DB['cont_011']['link']:
+        return render_template('single_img.html',
+                               con_id=Content_DB['cont_011']['ID'],
+                               con_thumb=Content_DB['cont_011']['thumb'],
+                               con_bigPic=Content_DB['cont_011']['bigPic'],
+                               con_title=Content_DB['cont_011']['title'],
+                               con_text=Content_DB['cont_011']['text'])
 
 
 @app.errorhandler(404)

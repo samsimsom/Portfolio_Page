@@ -1,13 +1,15 @@
 <div class="container">
     <div class="row">
-        {% for IMGDB_key in Content_DB %}
+
+            {% for e_id_e in srt_str_con_id_list %}
             <div class="col-lg-3 col-sm-4 col-xs-6">
-                <a title="{{ Content_DB[IMGDB_key]['link'] }}"
-                   href="{{ url_for('single_img', page=Content_DB[IMGDB_key]['link']) }}">
+                <a title="{{ Content_DB['cont_0' + e_id_e]['title'] }}"
+                   href="{{ url_for('single_img', page=Content_DB['cont_0' + e_id_e]['link']) }}">
                     <img class="thumbnail img-responsive img-rounded"
-                         src="{{ Content_DB[IMGDB_key]['thumb'] }}">
+                         src="{{ Content_DB['cont_0' + e_id_e]['thumb'] }}">
                 </a>
             </div>
-        {% endfor %}
+                {% endfor %}
+
     </div>
 </div>

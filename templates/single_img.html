@@ -12,9 +12,9 @@
     {% include 'navbar.html' %}
 
     <div class="container">
-        {% for x in  con_bigPic%}
+        {% for big_img in  con_bigPic%}
             <div class="col-md-8 col-md-offset-2">
-                <img title="{{ con_title }}" class="img-responsive img-rounded" src="{{ x }}">
+                <img title="{{ con_title }}" class="img-responsive img-rounded" src="{{ big_img }}">
                 <hr>
             </div>
         {% endfor %}
