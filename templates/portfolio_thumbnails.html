@@ -1,9 +1,11 @@
 <div class="container">
     <div class="row">
-        {% for x in imageNumber %}
+        {% for IMGDB_key in Content_DB %}
             <div class="col-lg-3 col-sm-4 col-xs-6">
-                <a title="Image {{ x }}" href="{{ url_for('single_img', img=x) }}">
-                    <img class="thumbnail img-responsive img-rounded" src="//placehold.it/350x350">
+                <a title="{{ Content_DB[IMGDB_key]['link'] }}"
+                   href="{{ url_for('single_img', page=Content_DB[IMGDB_key]['link']) }}">
+                    <img class="thumbnail img-responsive img-rounded"
+                         src="{{ Content_DB[IMGDB_key]['thumb'] }}">
                 </a>
             </div>
         {% endfor %}
