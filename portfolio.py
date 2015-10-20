@@ -1,4 +1,5 @@
 ### Python
+import sys
 from datetime import datetime
 ### Flask
 from flask import Flask, \
@@ -49,12 +50,18 @@ def index():
     #print(type(srt_str_con_id_list[0]))
     ##
 
+    ##
+    # Python Version
+    ##
+    pyVer = sys.version
+
     return render_template('index.html',
                            Content_DB=Content_DB,
                            con_id_list=con_id_list,
                            srt_str_con_id_list=srt_str_con_id_list,
                            count=session['count'],
-                           when=g.when)
+                           when=g.when,
+                           pyVer=pyVer)
 
 
 @app.route('/about')
@@ -89,7 +96,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_02']['bigPic'],
                                con_title=Content_DB['cont_02']['title'],
                                con_text=Content_DB['cont_02']['text'])
-    
+
     if page == Content_DB['cont_03']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_03']['ID'],
@@ -97,7 +104,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_03']['bigPic'],
                                con_title=Content_DB['cont_03']['title'],
                                con_text=Content_DB['cont_03']['text'])
-    
+
     if page == Content_DB['cont_04']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_04']['ID'],
@@ -105,7 +112,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_04']['bigPic'],
                                con_title=Content_DB['cont_04']['title'],
                                con_text=Content_DB['cont_04']['text'])
-    
+
     if page == Content_DB['cont_05']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_05']['ID'],
@@ -113,7 +120,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_05']['bigPic'],
                                con_title=Content_DB['cont_05']['title'],
                                con_text=Content_DB['cont_05']['text'])
-    
+
     if page == Content_DB['cont_06']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_06']['ID'],
@@ -121,7 +128,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_06']['bigPic'],
                                con_title=Content_DB['cont_06']['title'],
                                con_text=Content_DB['cont_06']['text'])
-    
+
     if page == Content_DB['cont_07']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_07']['ID'],
@@ -129,7 +136,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_07']['bigPic'],
                                con_title=Content_DB['cont_07']['title'],
                                con_text=Content_DB['cont_07']['text'])
-    
+
     if page == Content_DB['cont_08']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_08']['ID'],
@@ -137,7 +144,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_08']['bigPic'],
                                con_title=Content_DB['cont_08']['title'],
                                con_text=Content_DB['cont_08']['text'])
-    
+
     if page == Content_DB['cont_09']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_09']['ID'],
@@ -145,7 +152,7 @@ def single_img(page):
                                con_bigPic=Content_DB['cont_09']['bigPic'],
                                con_title=Content_DB['cont_09']['title'],
                                con_text=Content_DB['cont_09']['text'])
-    
+
     if page == Content_DB['cont_010']['link']:
         return render_template('single_img.html',
                                con_id=Content_DB['cont_010']['ID'],
